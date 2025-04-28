@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PROG3C-BudgeApp</string>
+    <!-- General Descriptions -->
+    <string name="logo_desc">Budge Logo</string>
+    <string name="hero_desc">Hero Image</string>
+
+    <!-- Main Screen Buttons -->
+    <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
+
+    <!-- Sign In Page -->
+    <string name="sign_in_text">Sign into your account</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="register_prompt">Don’t have an account? Register</string>
+
+    <!-- Register Page -->
+    <string name="register_text">Create a new account</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="register_button">Register</string>
+    <string name="login_prompt">Already have an account? Sign In</string>
+</resources>
