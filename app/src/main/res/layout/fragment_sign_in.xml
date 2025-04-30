@@ -71,7 +71,7 @@
                 android:id="@+id/emailTxt"
                 android:layout_width="245dp"
                 android:layout_height="48dp"
-                android:hint="Email"
+                android:hint="Username"
                 android:inputType="textEmailAddress"
                 app:layout_constraintTop_toBottomOf="@id/textView"
                 app:layout_constraintStart_toStartOf="parent"
