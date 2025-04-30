@@ -9,8 +9,11 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
+import android.text.InputType
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.prog3c_budgeapp.model.Expense  // adjust the path as needed
 import com.example.prog3c_budgeapp.databinding.ActivityAddexpenseBinding
@@ -24,9 +27,9 @@ class AddExpenseActivity : AppCompatActivity() {
     private var selectedImageUri: Uri? = null
     private val calendar = Calendar.getInstance()
 
-    private val categories = listOf(
+    private val categories = mutableListOf(
         "Food", "Transport", "Shopping", "Bills", "Entertainment", "Health",
-        "Education", "Home", "Travel", "Others"
+        "Education", "Home", "Travel", "Create New Category"
     )
 
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
@@ -86,7 +89,7 @@ class AddExpenseActivity : AppCompatActivity() {
     }
 
     private fun showCategoryDialog() {
-        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this)
         builder.setTitle("Select Category")
 
         val adapter = ArrayAdapter(
@@ -96,11 +99,41 @@ class AddExpenseActivity : AppCompatActivity() {
         )
 
         builder.setAdapter(adapter) { _, which ->
-            binding.categoryText.text = categories[which]
-            binding.categoryDropdownIcon.setImageResource(R.drawable.ic_check_white)
-            binding.categoryDropdownIcon.visibility = View.VISIBLE
+            if (categories[which] == "Create New Category") {
+                showNewCategoryDialog()
+            } else {
+                binding.categoryText.text = categories[which]
+                binding.categoryDropdownIcon.setImageResource(R.drawable.ic_check_white)
+                binding.categoryDropdownIcon.visibility = View.VISIBLE
+            }
         }
 
+        builder.show()
+    }
+
+    private fun showNewCategoryDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Create New Category")
+
+        val input = EditText(this)
+        input.inputType = InputType.TYPE_CLASS_TEXT
+        input.hint = "Enter category name"
+        builder.setView(input)
+
+        builder.setPositiveButton("Add") { _, _ ->
+            val newCategory = input.text.toString().trim()
+            if (newCategory.isNotEmpty()) {
+                categories.add(categories.size - 1, newCategory)
+                binding.categoryText.text = newCategory
+                binding.categoryDropdownIcon.setImageResource(R.drawable.ic_check_white)
+                binding.categoryDropdownIcon.visibility = View.VISIBLE
+                Toast.makeText(this, "New category added", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Category name cannot be empty", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        builder.setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
         builder.show()
     }
 
@@ -146,7 +179,7 @@ class AddExpenseActivity : AppCompatActivity() {
     private fun showImagePickerOptions() {
         val options = arrayOf("Take Photo", "Choose from Gallery", "Cancel")
 
-        androidx.appcompat.app.AlertDialog.Builder(this)
+        AlertDialog.Builder(this)
             .setTitle("Add Receipt")
             .setItems(options) { dialog, which ->
                 when (which) {
@@ -182,7 +215,7 @@ class AddExpenseActivity : AppCompatActivity() {
         val description = binding.descriptionEditText.text.toString()
         val amountStr = binding.amountEditText.text.toString()
 
-        if (category == "Add Category" || category.isEmpty()) {
+        if (category == "Create New Category" || category.isEmpty()) {
             Toast.makeText(this, "Please select a category", Toast.LENGTH_SHORT).show()
             return
         }
@@ -204,6 +237,7 @@ class AddExpenseActivity : AppCompatActivity() {
         }
 
         val isRecurring = binding.recurringCheckbox.isChecked
+        val receiptUri = selectedImageUri?.toString()
 
         val expense = Expense(
             id = 0,
@@ -212,7 +246,7 @@ class AddExpenseActivity : AppCompatActivity() {
             amount = amount,
             isRecurring = isRecurring,
             date = calendar.timeInMillis,
-            receiptUri = selectedImageUri?.toString()
+            receiptUri = receiptUri
         )
 
         // TODO: Save to database
