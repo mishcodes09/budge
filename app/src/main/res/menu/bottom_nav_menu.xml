@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/nav_stats"
+        android:icon="@drawable/ic_stats"
+        android:title="Stats" />
+    <item
+        android:id="@+id/nav_add"
+        android:icon="@drawable/ic_add"
+        android:title="" />
+    <item
+        android:id="@+id/nav_wallet"
+        android:icon="@drawable/ic_wallet"
+        android:title="Wallet" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile" />
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/navigation_transact"
+        android:icon="@drawable/ic_transact"
+        android:title="Transact" />
+    <item
+        android:id="@+id/navigation_add"
+        android:icon="@drawable/ic_add"
+        android:title="" />
+    <item
+        android:id="@+id/navigation_budget"
+        android:icon="@drawable/ic_budget"
+        android:title="Budget" />
+    <item
+        android:id="@+id/navigation_expenses"
+        android:icon="@drawable/ic_expenses"
+        android:title="Expenses" />
+</menu>
