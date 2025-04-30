@@ -1,23 +1,61 @@
 <resources>
+    <!-- App Name -->
     <string name="app_name">PROG3C-BudgeApp</string>
-    <!-- General Descriptions -->
-    <string name="logo_desc">Budge Logo</string>
-    <string name="hero_desc">Hero Image</string>
 
-    <!-- Main Screen Buttons -->
+    <!-- Accessibility Descriptions -->
+    <string name="logo_desc">Budge logo</string>
+    <string name="hero_desc">Hero image for onboarding screen</string>
+
+    <!-- Authentication - Common -->
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+
+    <!-- Main Screen -->
     <string name="sign_in">Sign In</string>
     <string name="register">Register</string>
 
     <!-- Sign In Page -->
     <string name="sign_in_text">Sign into your account</string>
-    <string name="email_hint">Email</string>
-    <string name="password_hint">Password</string>
     <string name="sign_in_button">Sign In</string>
     <string name="register_prompt">Don’t have an account? Register</string>
 
     <!-- Register Page -->
     <string name="register_text">Create a new account</string>
-    <string name="confirm_password_hint">Confirm Password</string>
     <string name="register_button">Register</string>
     <string name="login_prompt">Already have an account? Sign In</string>
+
+    <!-- Add Expense Fragment -->
+    <string name="new_expense">New Expense</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Add Expense Activity -->
+    <string name="add_expense_title">Add New Expense</string>
+    <string name="select_category">Select Category</string>
+    <string name="add_category_default">Add Category</string>
+    <string name="description_hint">Enter description</string>
+    <string name="amount_hint">Enter amount</string>
+    <string name="recurring_label">Mark as recurring</string>
+    <string name="upload_receipt">Add Receipt</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_gallery">Choose from Gallery</string>
+    <string name="cancel_action">Cancel</string>
+    <string name="save_expense">Save Expense</string>
+    <string name="expense_saved_success">Expense saved successfully</string>
+
+    <!-- Validation Messages -->
+    <string name="error_select_category">Please select a category</string>
+    <string name="error_enter_description">Please enter a description</string>
+    <string name="error_enter_amount">Please enter an amount</string>
+    <string name="error_invalid_amount">Please enter a valid amount</string>
+    <string name="receipt_added">Receipt added</string>
+    <string name="photo_captured">Photo captured</string>
+
+    <!-- Misc -->
+    <string name="date_label">Date</string>
+    <string name="time_label">Time</string>
+    <string name="add_receipt_title">Add Receipt</string>
+
+    <!-- Placeholder (remove if unused) -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
