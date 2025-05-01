@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.DatabaseReference
@@ -23,7 +24,16 @@ class RegisterFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_register, container, false)
 
-        usernameEditText = view.findViewById(R.id.emailTxt)
+        val signInLink = view.findViewById<TextView>(R.id.signInLink)
+        signInLink.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, SignInFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+
+        usernameEditText = view.findViewById(R.id.usernameTxt)
         passwordEditText = view.findViewById(R.id.passwordTxt)
 
         val registerButton = view.findViewById<Button>(R.id.btnRegister)
@@ -71,17 +81,22 @@ class RegisterFragment : Fragment() {
         // Save user to Firebase
         database.child("users").child(userId).setValue(user).addOnSuccessListener {
             Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
-            navigateToHome()
+            navigateToHome(username)
         }.addOnFailureListener {
             Toast.makeText(requireContext(), "Registration failed: ${it.message}", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun navigateToHome() {
+    private fun navigateToHome(username: String) {
         val homeFragment = HomeFragment()
+        val bundle = Bundle()
+        bundle.putString("username", username)
+        homeFragment.arguments = bundle
+
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, homeFragment)
             .addToBackStack(null)
             .commit()
     }
+
 }

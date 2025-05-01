@@ -28,16 +28,16 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set user name and wallet data
-        binding.userGreeting.text = "Hello, Charlie"
+        val username = arguments?.getString("username") ?: "User"
+        binding.userGreeting.text = "Hello, $username"
+
         binding.cashAmount.text = "10,000.00"
         binding.expensesAmount.text = "4500.00"
         binding.incomeAmount.text = "15,000.00"
 
         setupBarChart()
-
-
     }
+
 
 
     private fun setupBarChart() {

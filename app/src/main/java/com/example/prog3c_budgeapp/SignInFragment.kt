@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.DatabaseReference
@@ -22,6 +23,14 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sign_in, container, false)
+
+        val registerLink = view.findViewById<TextView>(R.id.registerLink)
+        registerLink.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, RegisterFragment())
+                .addToBackStack(null)
+                .commit()
+        }
 
         usernameEditText = view.findViewById(R.id.emailTxt)
         passwordEditText = view.findViewById(R.id.passwordTxt)
@@ -56,7 +65,7 @@ class SignInFragment : Fragment() {
                         val user = userSnapshot.getValue(User::class.java)
                         if (user != null && user.password == password) {
                             loginSuccessful = true
-                            navigateToHome()
+                            navigateToHome(user.username)
                             break
                         }
                     }
@@ -72,9 +81,13 @@ class SignInFragment : Fragment() {
             }
     }
 
-    private fun navigateToHome() {
+    private fun navigateToHome(username: String) {
         Toast.makeText(requireContext(), "Sign in successful", Toast.LENGTH_SHORT).show()
         val homeFragment = HomeFragment()
+        val bundle = Bundle()
+        bundle.putString("username", username)
+        homeFragment.arguments = bundle
+
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, homeFragment)
             .addToBackStack(null)
