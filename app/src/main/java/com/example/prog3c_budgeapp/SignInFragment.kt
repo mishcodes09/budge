@@ -10,11 +10,13 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class SignInFragment : Fragment() {
 
+    private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
@@ -25,6 +27,7 @@ class SignInFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sign_in, container, false)
 
+        // Link to Register Fragment
         val registerLink = view.findViewById<TextView>(R.id.registerLink)
         registerLink.setOnClickListener {
             parentFragmentManager.beginTransaction()
@@ -33,6 +36,10 @@ class SignInFragment : Fragment() {
                 .commit()
         }
 
+        // Initialize Firebase Auth and Database
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance().reference
+
         usernameEditText = view.findViewById(R.id.emailTxt)
         passwordEditText = view.findViewById(R.id.passwordTxt)
 
@@ -40,9 +47,6 @@ class SignInFragment : Fragment() {
         signInButton.setOnClickListener {
             signIn()
         }
-
-        // Initialize Firebase Database reference
-        database = FirebaseDatabase.getInstance().reference
 
         return view
     }
@@ -56,37 +60,35 @@ class SignInFragment : Fragment() {
             return
         }
 
-        // Query the database for the user by username
-        database.child("users").orderByChild("username").equalTo(username)
-            .get().addOnSuccessListener { snapshot ->
-                if (snapshot.exists()) {
-                    // User exists, now check password
-                    var loginSuccessful = false
-                    for (userSnapshot in snapshot.children) {
-                        val user = userSnapshot.getValue(User::class.java)
-                        if (user != null && user.password == password) {
-                            loginSuccessful = true
-                            navigateToDashboard(user.username)
-                            break
-                        }
-                    }
-
-                    if (!loginSuccessful) {
-                        Toast.makeText(requireContext(), "Incorrect password", Toast.LENGTH_SHORT).show()
+        // Sign in with Firebase Authentication using email and password
+        auth.signInWithEmailAndPassword("$username@example.com", password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val currentUser = auth.currentUser
+                    if (currentUser != null) {
+                        // Retrieve the user's information from the database
+                        database.child("users").child(currentUser.uid).get()
+                            .addOnSuccessListener { snapshot ->
+                                val user = snapshot.getValue(User::class.java)
+                                if (user != null) {
+                                    Toast.makeText(requireContext(), "Sign in successful", Toast.LENGTH_SHORT).show()
+                                    navigateToDashboard(user.username)
+                                }
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(requireContext(), "Failed to retrieve user data: ${it.message}", Toast.LENGTH_SHORT).show()
+                            }
                     }
                 } else {
-                    Toast.makeText(requireContext(), "User not found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Sign in failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
-            }.addOnFailureListener {
-                Toast.makeText(requireContext(), "Sign in failed: ${it.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
     private fun navigateToDashboard(username: String) {
-        Toast.makeText(requireContext(), "Sign in successful", Toast.LENGTH_SHORT).show()
         val intent = Intent(requireContext(), Dashboard::class.java)
         intent.putExtra("username", username)
         startActivity(intent)
-        requireActivity().finish() // optional: prevents going back to sign in
+        requireActivity().finish() // Prevents going back to Sign In screen
     }
 }

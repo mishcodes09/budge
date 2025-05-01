@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.prog3c_budgeapp.model.Expense  // adjust the path as needed
 import com.example.prog3c_budgeapp.databinding.ActivityAddexpenseBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -246,13 +247,17 @@ class AddExpenseActivity : AppCompatActivity() {
         val date = dateFormat.format(calendar.time)
         val time = timeFormat.format(calendar.time)
 
+//        val userId = com.google.firebase.auth.FirebaseAuth.getInstance().currentUser?.uid ?: ""
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+
         val expense = Expense(
             category = category,
             description = description,
             amount = amount,
             date = date,
             time = time,
-            receiptUri = receiptUri
+            receiptUri = receiptUri,
+            userId = userId
         )
 
         val database = FirebaseDatabase.getInstance()
