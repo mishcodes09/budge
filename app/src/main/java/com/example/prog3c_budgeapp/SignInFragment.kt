@@ -1,5 +1,6 @@
 package com.example.prog3c_budgeapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -65,7 +66,7 @@ class SignInFragment : Fragment() {
                         val user = userSnapshot.getValue(User::class.java)
                         if (user != null && user.password == password) {
                             loginSuccessful = true
-                            navigateToHome(user.username)
+                            navigateToDashboard(user.username)
                             break
                         }
                     }
@@ -81,16 +82,11 @@ class SignInFragment : Fragment() {
             }
     }
 
-    private fun navigateToHome(username: String) {
+    private fun navigateToDashboard(username: String) {
         Toast.makeText(requireContext(), "Sign in successful", Toast.LENGTH_SHORT).show()
-        val homeFragment = HomeFragment()
-        val bundle = Bundle()
-        bundle.putString("username", username)
-        homeFragment.arguments = bundle
-
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, homeFragment)
-            .addToBackStack(null)
-            .commit()
+        val intent = Intent(requireContext(), Dashboard::class.java)
+        intent.putExtra("username", username)
+        startActivity(intent)
+        requireActivity().finish() // optional: prevents going back to sign in
     }
 }
