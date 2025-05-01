@@ -15,9 +15,12 @@ data class Expense(
     var time: String = "",
     var receiptUri: String? = null,
 
+    var userId: String = "",
+
+
+
     @get:Exclude
     var key: String? = null
 ) {
     constructor() : this(0, "", "", 0.0, "", "", null)
 }
-

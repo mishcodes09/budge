@@ -50,7 +50,7 @@ class Dashboard : AppCompatActivity() {
 
         navExpenses.setOnClickListener {
             // Placeholder - replace with actual expenses fragment
-            loadFragment(Fragment())
+            loadFragment(TotalExpensesFragment())
         }
     }
 
