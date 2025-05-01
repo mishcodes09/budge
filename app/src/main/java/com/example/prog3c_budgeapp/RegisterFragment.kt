@@ -1,11 +1,13 @@
 package com.example.prog3c_budgeapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.DatabaseReference
@@ -23,7 +25,15 @@ class RegisterFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_register, container, false)
 
-        usernameEditText = view.findViewById(R.id.emailTxt)
+        val signInLink = view.findViewById<TextView>(R.id.signInLink)
+        signInLink.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, SignInFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        usernameEditText = view.findViewById(R.id.usernameTxt)
         passwordEditText = view.findViewById(R.id.passwordTxt)
 
         val registerButton = view.findViewById<Button>(R.id.btnRegister)
@@ -62,26 +72,21 @@ class RegisterFragment : Fragment() {
     }
 
     private fun createNewUser(username: String, password: String) {
-        // Create a new user ID
         val userId = database.child("users").push().key ?: return
-
-        // Create User object
         val user = User(userId, username, password)
 
-        // Save user to Firebase
         database.child("users").child(userId).setValue(user).addOnSuccessListener {
             Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
-            navigateToHome()
+            navigateToDashboard(username)
         }.addOnFailureListener {
             Toast.makeText(requireContext(), "Registration failed: ${it.message}", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun navigateToHome() {
-        val homeFragment = HomeFragment()
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, homeFragment)
-            .addToBackStack(null)
-            .commit()
+    private fun navigateToDashboard(username: String) {
+        val intent = Intent(requireContext(), Dashboard::class.java)
+        intent.putExtra("username", username)
+        startActivity(intent)
+        requireActivity().finish()
     }
 }

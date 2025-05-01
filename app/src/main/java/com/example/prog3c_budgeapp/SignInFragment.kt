@@ -1,11 +1,13 @@
 package com.example.prog3c_budgeapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.DatabaseReference
@@ -22,6 +24,14 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sign_in, container, false)
+
+        val registerLink = view.findViewById<TextView>(R.id.registerLink)
+        registerLink.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, RegisterFragment())
+                .addToBackStack(null)
+                .commit()
+        }
 
         usernameEditText = view.findViewById(R.id.emailTxt)
         passwordEditText = view.findViewById(R.id.passwordTxt)
@@ -56,7 +66,7 @@ class SignInFragment : Fragment() {
                         val user = userSnapshot.getValue(User::class.java)
                         if (user != null && user.password == password) {
                             loginSuccessful = true
-                            navigateToHome()
+                            navigateToDashboard(user.username)
                             break
                         }
                     }
@@ -72,12 +82,11 @@ class SignInFragment : Fragment() {
             }
     }
 
-    private fun navigateToHome() {
+    private fun navigateToDashboard(username: String) {
         Toast.makeText(requireContext(), "Sign in successful", Toast.LENGTH_SHORT).show()
-        val homeFragment = HomeFragment()
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, homeFragment)
-            .addToBackStack(null)
-            .commit()
+        val intent = Intent(requireContext(), Dashboard::class.java)
+        intent.putExtra("username", username)
+        startActivity(intent)
+        requireActivity().finish() // optional: prevents going back to sign in
     }
 }
