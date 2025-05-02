@@ -56,6 +56,11 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+//    implementation("com.google.firebase:firebase-auth:22.3.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+    implementation ("com.google.firebase:firebase-auth:22.3.0")
     implementation(libs.firebase.database)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
@@ -70,6 +75,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation("androidx.fragment:fragment-ktx:1.7.0")
+    implementation ("com.google.firebase:firebase-auth:22.3.0")
 
     implementation("com.google.firebase:firebase-database-ktx:20.3.0")
 

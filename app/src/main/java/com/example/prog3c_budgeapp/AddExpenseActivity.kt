@@ -17,9 +17,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.prog3c_budgeapp.model.Expense  // adjust the path as needed
 import com.example.prog3c_budgeapp.databinding.ActivityAddexpenseBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+
+
 
 class AddExpenseActivity : AppCompatActivity() {
 
@@ -236,22 +240,38 @@ class AddExpenseActivity : AppCompatActivity() {
             return
         }
 
-        val isRecurring = binding.recurringCheckbox.isChecked
         val receiptUri = selectedImageUri?.toString()
 
+        val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+        val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
+        val date = dateFormat.format(calendar.time)
+        val time = timeFormat.format(calendar.time)
+
+//        val userId = com.google.firebase.auth.FirebaseAuth.getInstance().currentUser?.uid ?: ""
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+
         val expense = Expense(
-            id = 0,
             category = category,
             description = description,
             amount = amount,
-            isRecurring = isRecurring,
-            date = calendar.timeInMillis,
-            receiptUri = receiptUri
+            date = date,
+            time = time,
+            receiptUri = receiptUri,
+            userId = userId
         )
 
-        // TODO: Save to database
-        Toast.makeText(this, "Expense saved successfully", Toast.LENGTH_SHORT).show()
+        val database = FirebaseDatabase.getInstance()
+        val ref = database.getReference("expenses").push()
 
-        finish()
+        ref.setValue(expense)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Expense saved successfully", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            .addOnFailureListener { e ->
+                e.printStackTrace()
+                Toast.makeText(this, "Failed to save: ${e.message}", Toast.LENGTH_LONG).show()
+            }
     }
+
 }
