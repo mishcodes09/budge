@@ -7,7 +7,9 @@ import android.widget.LinearLayout
 import com.example.prog3c_budgeapp.databinding.ActivityDashboardBinding
 import com.example.prog3c_budgeapp.AddExpenseFragment
 import com.example.prog3c_budgeapp.HomeFragment
+import com.example.prog3c_budgeapp.model.Budget.Budget
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import vcmsa.projects.prog7313budgetapp.TransactionFragment
 
 class Dashboard : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
@@ -34,7 +36,7 @@ class Dashboard : AppCompatActivity() {
 
         navTransact.setOnClickListener {
             // Placeholder - replace with actual transaction fragment
-            loadFragment(Fragment())
+            loadFragment(TransactionFragment())
         }
 
         fabAdd.setOnClickListener {
@@ -45,7 +47,7 @@ class Dashboard : AppCompatActivity() {
 
         navBudget.setOnClickListener {
             // Placeholder - replace with actual budget fragment
-            loadFragment(Fragment())
+            loadFragment(BudgetGoalFragment())
         }
 
         navExpenses.setOnClickListener {

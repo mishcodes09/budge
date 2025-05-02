@@ -2,6 +2,7 @@ package com.example.prog3c_budgeapp.model
 
 import com.google.firebase.database.Exclude
 import com.google.firebase.database.IgnoreExtraProperties
+import java.io.Serializable
 
 @IgnoreExtraProperties
 data class Expense(
@@ -21,6 +22,6 @@ data class Expense(
 
     @get:Exclude
     var key: String? = null
-) {
+): Serializable {
     constructor() : this(0, "", "", 0.0, "", "", null)
 }
