@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Food"
         android:textSize="16sp"
-        android:textColor="@color/black"
+        android:textColor="@color/card_dark_green"
         app:layout_constraintEnd_toStartOf="@+id/tvTotal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

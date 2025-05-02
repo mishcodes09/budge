@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Budget Category Spinner -->
+    <Spinner
+        android:id="@+id/budgetCategorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Month EditText -->
+    <EditText
+        android:id="@+id/budgetMonth"
+        android:hint="Month (e.g., January)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <!-- Amount EditText -->
+    <EditText
+        android:id="@+id/budgetAmount"
+        android:hint="Amount"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/saveBudgetButton"
+        android:text="Save Budget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

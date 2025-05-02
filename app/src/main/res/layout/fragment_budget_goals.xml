@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:descendantFocusability="blocksDescendants">
+
+        <TextView
+            android:id="@+id/textBudgetGoals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Budget Goals"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/amountLeftText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount you can spend"
+            android:textSize="16sp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/minMaxText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Min: R0 | Max: R0"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progress="65"
+            android:max="100"
+            android:progressTint="@android:color/holo_green_light"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/setGoalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set Monthly Goal"
+            android:backgroundTint="@android:color/black"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/createBudgetButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Budget Category"
+            android:backgroundTint="@android:color/black"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/YourGoalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your Goals" />
+
+        <LinearLayout
+            android:id="@+id/goalContainer"
+            android:layout_width="match_parent"
+            android:layout_height="448dp"
+            android:orientation="vertical"
+            />
+
+    </LinearLayout>
+</ScrollView>
