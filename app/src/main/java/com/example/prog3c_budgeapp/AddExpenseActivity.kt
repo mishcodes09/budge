@@ -4,6 +4,8 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.ContentValues
 import android.content.Intent
+import android.content.res.ColorStateList
+import androidx.core.content.ContextCompat
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -30,6 +32,8 @@ class AddExpenseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddexpenseBinding
     private var selectedImageUri: Uri? = null
     private val calendar = Calendar.getInstance()
+    private var isExpense: Boolean = true
+
 
     private val categories = mutableListOf(
         "Food", "Transport", "Shopping", "Bills", "Entertainment", "Health",
@@ -56,6 +60,7 @@ class AddExpenseActivity : AppCompatActivity() {
 
         setupUI()
         setupListeners()
+        updateToggleStyles()
     }
 
     private fun setupUI() {
@@ -90,7 +95,38 @@ class AddExpenseActivity : AppCompatActivity() {
         binding.uploadCardView.setOnClickListener {
             showImagePickerOptions()
         }
+
+        binding.btnExpense.setOnClickListener {
+            Toast.makeText(this, "Expense tapped", Toast.LENGTH_SHORT).show()
+            isExpense = true
+            updateToggleStyles()
+        }
+
+
+        binding.btnIncome.setOnClickListener {
+            Toast.makeText(this, "Income tapped", Toast.LENGTH_SHORT).show()
+            isExpense = false
+            updateToggleStyles()
+        }
     }
+
+    private fun updateToggleStyles() {
+        val selectedColor = ContextCompat.getColor(this, R.color.selected_border)
+        val defaultColor = ContextCompat.getColor(this, R.color.default_border)
+
+        if (isExpense) {
+            binding.btnExpense.strokeColor = ColorStateList.valueOf(selectedColor)
+            binding.btnIncome.strokeColor = ColorStateList.valueOf(defaultColor)
+        } else {
+            binding.btnIncome.strokeColor = ColorStateList.valueOf(selectedColor)
+            binding.btnExpense.strokeColor = ColorStateList.valueOf(defaultColor)
+        }
+    }
+
+
+
+
+
 
     private fun showCategoryDialog() {
         val builder = AlertDialog.Builder(this)

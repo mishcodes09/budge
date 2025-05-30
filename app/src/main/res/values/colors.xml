@@ -6,5 +6,8 @@
     <color name="card_dark_green">#388E3C</color>
     <color name="colorPrimary">#6200EE</color> <!-- or your actual primary color -->
     <color name="border_color">#CCCCCC</color> <!-- light grey border, change as needed -->
+    <color name="green">#4CAF50</color> <!-- a nice material green -->
+    <color name="default_border">#000000</color> <!-- black -->
+    <color name="selected_border">#4CAF50</color> <!-- green or any highlight -->
 
 </resources>

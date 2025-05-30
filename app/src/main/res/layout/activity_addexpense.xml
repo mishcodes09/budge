@@ -53,7 +53,7 @@
     <LinearLayout
         android:id="@+id/toggleButtonsLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
@@ -63,23 +63,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnExpense"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
-            android:text="💸 EXPENSE" />
+            android:text="💸 EXPENSE"
+            android:clickable="true"
+            android:focusable="true"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnIncome"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_weight="1"
-            android:text="💰 INCOME" />
+            android:text="💰 INCOME"
+            android:clickable="true"
+            android:focusable="true"/>
     </LinearLayout>
 
     <!-- Form Fields -->
