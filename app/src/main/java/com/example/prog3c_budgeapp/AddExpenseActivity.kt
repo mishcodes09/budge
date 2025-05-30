@@ -123,11 +123,6 @@ class AddExpenseActivity : AppCompatActivity() {
         }
     }
 
-
-
-
-
-
     private fun showCategoryDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Select Category")
@@ -297,11 +292,12 @@ class AddExpenseActivity : AppCompatActivity() {
         )
 
         val database = FirebaseDatabase.getInstance()
-        val ref = database.getReference("expenses").push()
+        val parentNode = if (isExpense) "expenses" else "income"
+        val ref = database.getReference(parentNode).push()
 
         ref.setValue(expense)
             .addOnSuccessListener {
-                Toast.makeText(this, "Expense saved successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "${if (isExpense) "Expense" else "Income"} saved successfully", Toast.LENGTH_SHORT).show()
                 finish()
             }
             .addOnFailureListener { e ->
