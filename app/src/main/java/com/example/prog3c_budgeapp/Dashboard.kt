@@ -10,9 +10,11 @@ import com.example.prog3c_budgeapp.HomeFragment
 import com.example.prog3c_budgeapp.model.Budget.Budget
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import vcmsa.projects.prog7313budgetapp.TransactionFragment
+import android.content.Intent
 
 class Dashboard : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,7 @@ class Dashboard : AppCompatActivity() {
         val navBudget = binding.root.findViewById<LinearLayout>(R.id.navBudget)
         val navExpenses = binding.root.findViewById<LinearLayout>(R.id.navExpenses)
 
+
         // Set up navigation click listeners
         navHome.setOnClickListener {
             loadFragment(HomeFragment())
@@ -40,10 +43,10 @@ class Dashboard : AppCompatActivity() {
         }
 
         fabAdd.setOnClickListener {
-            // Show the Add Expense dialog
-            val addExpenseFragment = AddExpenseFragment()
-            addExpenseFragment.show(supportFragmentManager, "ADD_EXPENSE")
+            val intent = Intent(this, AddExpenseActivity::class.java)
+            startActivity(intent)
         }
+
 
         navBudget.setOnClickListener {
             // Placeholder - replace with actual budget fragment

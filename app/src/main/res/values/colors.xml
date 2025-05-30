@@ -4,5 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow_light">#FFF9C4</color>
     <color name="card_dark_green">#388E3C</color>
+    <color name="colorPrimary">#6200EE</color> <!-- or your actual primary color -->
+    <color name="border_color">#CCCCCC</color> <!-- light grey border, change as needed -->
 
 </resources>

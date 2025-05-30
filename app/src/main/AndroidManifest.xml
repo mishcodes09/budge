@@ -29,6 +29,9 @@
         <activity
             android:name=".Dashboard"
             android:exported="false" />
+
+
+
     </application>
 
 </manifest>
