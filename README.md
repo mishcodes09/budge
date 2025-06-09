@@ -12,7 +12,7 @@
 | Feature Area | Consideration |
 |--------------|----------------|
 | **UI/UX** | Responsive and user-friendly interface with a clean, calm design focused on clarity and ease of use |
-| **User Feedback** | All prototype feedback was implemented — e.g., improved spacing, clearer graph visuals, simpler navigation |
+| **User Feedback** | All prototype feedback was implemented — including a more complete and polished UI, the addition of income tracking functionality, improved spacing, clearer graph visuals, and simplified navigation. |
 | **Performance** | Optimized for real device usage (not emulator), ensuring smooth animations and fast database operations |
 | **Accessibility** | Icons and color palettes tested for visibility and readability, especially around graphs and budget indicators |
 
@@ -20,7 +20,7 @@
 
 | Dashboard | Graph View | Add Expense |
 |----------|------------|-------------|
-| ![dashboard](https://github.com/user-attachments/assets/a7e03468-1f95-44b7-8f58-1453f2373d7c) | ![Graph](https://github.com/user-attachments/assets/8bc26829-249c-4c26-909a-dccfa959ce79) | ![Add](https://github.com/user-attachments/assets/75cc3c56-0fed-4eb6-87b8-286a1998f031) |
+| ![dashboard](https://github.com/user-attachments/assets/67cbaf37-594f-4c3a-9e56-b72951a7deee) | ![Graph](https://github.com/user-attachments/assets/9fcb7ad7-251d-49be-84bc-57e0508765a4) | ![Add](https://github.com/user-attachments/assets/1020994c-b98c-451d-9848-be4941ca1f78) |
 
 ## 🧠 Core Features
 
@@ -36,14 +36,11 @@
 
 ## 🚀 Additional Features
 
-### ✅ Feature 1: Receipt Upload
-Users can upload an image of their receipt when logging a transaction, which is stored in Firebase Storage and linked to the expense.
+### ✅ Feature 1: Income Tracking Functionality  
+Users can now add, view, and manage **income entries** alongside expenses. This allows for a more complete view of their financial status and makes the app suitable for both budgeting and saving purposes.
 
-### ✅ Feature 2: Monthly Breakdown Summary
-At the end of each month, users receive a summary screen with:
-- Total spending per category
-- Comparison to previous months
-- A star badge if they stay within budget in all categories
+### ✅ Feature 2: Combined Expense & Income Graph  
+An interactive graph displays **both expenses and income per category** over a user-defined time period. This dual-visual representation helps users quickly understand their financial health and make informed decisions.
 
 
 ## 🛠️ Technologies Used
@@ -93,6 +90,7 @@ jobs:
         distribution: 'temurin'
     - name: Build Project
       run: ./gradlew build
+```
 
 ## 🔚 Final Notes
 
@@ -102,18 +100,12 @@ jobs:
 - ✅ All lecturer feedback implemented from the prototype phase
 - ✅ README includes documented custom features
 
-### 📹 Video Demo
-[🎥 Watch Demo](https://example.com/final_demo_video) <!-- Replace with your actual demo link -->
-
----
-
 ## 👤 Developed By
 
-- **Student Name:** John Doe  
-- **Module:** INSY6212 / IPMA6212  
-- **Institution:** [Your University Name]  
-- **Lecturer:** [Lecturer’s Name]  
-
+- **Student Name:** Mihle, Sihle, Nazreen, Micah
+- **Module:** PROG7313
+- **Institution:** IIE Varsity College
+- **Lecturer:** Reece Wanvig
 ---
 
 ## 📂 Repo Structure
@@ -132,10 +124,3 @@ jobs:
  ┣ 📜 .gitignore
  ┣ 📜 build.gradle
 
-
----
-
-## 📬 Feedback & Contact
-
-Feel free to raise an issue or suggest improvements using the **[Issues](../../issues)** tab.  
-For direct contact: 📧 **johndoe@example.com**
