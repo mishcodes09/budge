@@ -1,6 +1,6 @@
 # 💸 BudgetBuddy — Your Personal Expense Tracker
 
-![BudgetBuddy Banner](images/banner.png)
+![BudgetBuddy Banner]("C:\Users\User\Downloads\PART 3 FINAL ASSESSMENT 2025.png")
 
 > An Android-based financial wellness app that helps users track their spending, visualize their progress, and stay within their monthly financial goals. Powered by Firebase, Kotlin, and modern mobile development practices.
 
