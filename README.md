@@ -42,6 +42,34 @@ Users can now add, view, and manage **income entries** alongside expenses. This 
 ### ✅ Feature 2: Combined Expense & Income Graph  
 An interactive graph displays **both expenses and income per category** over a user-defined time period. This dual-visual representation helps users quickly understand their financial health and make informed decisions.
 
+## 📲 How to Use Budge
+
+Using **Budge** is simple and intuitive. Follow these steps to get started:
+
+### 1. 🔐 Sign Up / Log In
+- Launch the app and sign up with your email and password.
+- If you already have an account, simply log in.
+
+### 2. ➕ Add Income or Expenses
+- Tap the **“+”** button on the dashboard.
+- Choose whether to add an **Income** or an **Expense**.
+- Fill in the details:
+  - **Category**
+  - **Description**
+  - **Amount**
+  - **Date & Time**
+  - (Optional) Upload a receipt
+
+### 3. 📊 View Your Finances
+- Go to the **Graph** section to view a breakdown of your **income and expenses per category**.
+- Use the filters to select a custom date range.
+
+### 4. 🎯 Set and Track Goals
+- Define your **minimum and maximum spending goals** per category.
+- The app will show how well you are doing through visuals and feedback.
+
+### 5. 📅 Monthly Summary
+- At the end of each month, you’ll receive a **summary** showing total spending, income, and how it compares to previous months.
 
 ## 🛠️ Technologies Used
 
@@ -108,19 +136,4 @@ jobs:
 - **Lecturer:** Reece Wanvig
 ---
 
-## 📂 Repo Structure
-📦 app/
- ┣ 📂 src/
- ┃ ┣ 📂 main/
- ┃ ┃ ┣ 📂 java/
- ┃ ┃ ┣ 📂 res/
- ┃ ┃ ┣ 📜 AndroidManifest.xml
- ┣ 📂 images/
- ┃ ┣ dashboard.png
- ┃ ┣ graph.png
- ┃ ┣ add_expense.png
- ┃ ┣ banner.png
- ┣ 📜 README.md
- ┣ 📜 .gitignore
- ┣ 📜 build.gradle
 
