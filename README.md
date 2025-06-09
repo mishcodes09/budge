@@ -5,9 +5,7 @@
 
 ## 📱 Purpose of the App
 
-**BudgetBuddy** is a mobile application designed to help users track expenses across various categories, compare spending against user-defined goals, and visualize financial health in a meaningful and engaging way. The app is part of the final assessment for our Mobile App Development module and integrates feedback from the prototype phase to improve user experience and functionality.
-
----
+**Budge** is a mobile application designed to empower users to manage their finances more effectively by tracking expenses, monitoring savings goals, and promoting financial awareness. Through a user-friendly interface and engaging gamification features, the app helps users stay within their spending limits by providing visual insights and feedback. Developed as part of the final assessment for the Mobile App Development module, Budge integrates feedback from the prototype phase to deliver an improved and polished user experience.
 
 ## 🎨 Design Considerations
 
@@ -22,9 +20,7 @@
 
 | Dashboard | Graph View | Add Expense |
 |----------|------------|-------------|
-| ![Dashboard](images/dashboard.png) | ![Graph](images/graph.png) | ![Add](images/add_expense.png) |
-
----
+| ![dashboard](https://github.com/user-attachments/assets/a7e03468-1f95-44b7-8f58-1453f2373d7c) | ![Graph](https://github.com/user-attachments/assets/8bc26829-249c-4c26-909a-dccfa959ce79) | ![Add](https://github.com/user-attachments/assets/75cc3c56-0fed-4eb6-87b8-286a1998f031) |
 
 ## 🧠 Core Features
 
@@ -38,8 +34,6 @@
   - Set min/max limits per category
   - Visual indicators show how well the user is doing compared to their goals
 
----
-
 ## 🚀 Additional Features
 
 ### ✅ Feature 1: Receipt Upload
@@ -51,7 +45,6 @@ At the end of each month, users receive a summary screen with:
 - Comparison to previous months
 - A star badge if they stay within budget in all categories
 
----
 
 ## 🛠️ Technologies Used
 
@@ -64,7 +57,6 @@ At the end of each month, users receive a summary screen with:
 | **GitHub Actions** | Automate builds, run tests, and deploy previews |
 | **Android Studio** | Main development environment |
 
----
 
 ## 🔧 GitHub and GitHub Actions
 
