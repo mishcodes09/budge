@@ -1,6 +1,6 @@
 # 💸 Budge— Your Personal Expense Tracker
 
-![Budge Banner](https://github.com/user-attachments/assets/30d14c83-9726-4e8b-a517-e7ad7538f2e8)
+![Budge Banner](https://github.com/user-attachments/assets/fb43b97d-04bc-4893-b62f-2e8974c43812)
 
 > An Android-based financial wellness app that helps users track their spending, visualize their progress, and stay within their monthly financial goals. Powered by Firebase, Kotlin, and modern mobile development practices.
 
